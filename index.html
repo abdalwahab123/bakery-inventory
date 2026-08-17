@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نظام المخبز - إدارة المخزون</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Tahoma","Arial",sans-serif;background:#f5f7fa;color:#243447}
+button,input,select{font-family:inherit}
+.header{
+  min-height:82px;
+  background:linear-gradient(135deg,#b95605,#d96f08);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:12px 32px;
+  box-shadow:0 3px 14px #0002;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.header-right,.header-left,.header-nav{display:flex;align-items:center}
+.header-right{gap:12px}
+.logo-box{width:52px;height:52px;border-radius:14px;background:#fff2df;display:grid;place-items:center;font-size:28px;box-shadow:0 3px 8px #0002}
+.brand-text h1{margin:0;font-size:23px;font-weight:800}
+.brand-text span{display:block;font-size:11px;color:#ffe7ca;margin-top:4px}
+.header-nav{gap:7px}
+.nav-item{border:1px solid #ffffff33;background:#ffffff16;color:#fff;border-radius:9px;padding:10px 14px;cursor:pointer;font-size:13px;font-weight:bold}
+.nav-item:hover,.nav-item.active{background:#fff;color:#bd5d08}
+.header-left{gap:18px}
+.header-date{text-align:right;border-left:1px solid #ffffff44;padding-left:18px}
+.header-date span{display:block;font-size:10px;color:#ffe5c6}
+.header-date strong{display:block;font-size:12px;margin-top:3px}
+.user-box{display:flex;align-items:center;gap:8px}
+.user-icon{width:38px;height:38px;border-radius:50%;background:#fff2df;color:#9d4d04;display:grid;place-items:center;font-size:18px}
+.user-box strong{display:block;font-size:12px}
+.user-box small{display:block;font-size:10px;color:#ffe5c6;margin-top:2px}
+.container{max-width:1488px;margin:auto;padding:24px 28px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.card{background:white;border:1px solid #dce3ea;border-radius:13px;min-height:86px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 2px #00000008}
+.card .circle{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:22px}
+.card:nth-child(1) .circle{background:#fff0c9;color:#e78300}
+.card:nth-child(2) .circle{background:#ffe0e6;color:#ef3155}
+.card:nth-child(3) .circle{background:#d4f7e6;color:#0a9f68}
+.card .label{font-size:13px;color:#63748a;margin-bottom:6px}
+.card .value{font-size:22px;font-weight:bold;color:#d86d00}
+.card:nth-child(2) .value{color:#e9234c}
+.card:nth-child(3) .value{color:#008b61}
+.low-stock-panel{
+  margin-bottom:20px;
+  background:#fff;
+  border:1px solid #f1cbd2;
+  border-radius:13px;
+  overflow:hidden;
+  box-shadow:0 1px 2px #00000008;
+}
+.low-stock-header{
+  padding:16px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  background:#fff7f8;
+  border-bottom:1px solid #f3dce0;
+}
+.low-stock-header h2{margin:0;color:#d91f46;font-size:16px}
+.low-stock-header p{margin:5px 0 0;color:#7b8794;font-size:11px}
+.low-count{
+  min-width:38px;height:38px;border-radius:50%;
+  background:#ffe0e6;color:#d91f46;
+  display:grid;place-items:center;font-weight:bold;font-size:14px;
+}
+.low-stock-list{padding:12px}
+.low-stock-item{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:12px 14px;
+  border-bottom:1px solid #edf1f4;
+}
+.low-stock-item:last-child{border-bottom:0}
+.low-product{display:flex;align-items:center;gap:10px;min-width:0}
+.low-icon{
+  width:38px;height:38px;border-radius:9px;
+  background:#fff0f2;color:#df1e48;
+  display:grid;place-items:center;font-size:18px;flex:none;
+}
+.low-name{font-weight:bold;color:#27394d;font-size:13px}
+.low-category{display:block;color:#8a99a8;font-size:10px;margin-top:3px}
+.low-values{text-align:left;white-space:nowrap}
+.low-current{font-weight:bold;color:#e51d43;font-size:13px}
+.low-limit{display:block;color:#7a8998;font-size:10px;margin-top:3px}
+.low-empty{
+  padding:25px;text-align:center;color:#07885c;font-size:13px;font-weight:bold;
+  background:#f5fff9;border-radius:8px;
+}
+@media(max-width:800px){
+  .low-stock-header{padding:13px}
+  .low-stock-item{padding:11px 8px}
+}
+.panel{background:#fff;border-radius:13px;border:1px solid #dce3ea;overflow:hidden}
+.toolbar{padding:18px;display:flex;gap:12px;align-items:center;justify-content:space-between;border-bottom:1px solid #e7edf2}
+.search{position:relative;flex:1;max-width:480px}
+.search input{width:100%;height:44px;border:1px solid #cbd7e3;border-radius:9px;padding:0 42px 0 14px;outline:none;font-size:14px}
+.search span{position:absolute;right:14px;top:11px;color:#8aa0b5;font-size:20px}
+.add{height:44px;border:0;border-radius:9px;background:#e57b00;color:white;padding:0 20px;font-weight:bold;font-size:15px;cursor:pointer}
+.add:hover{background:#c96700}
+#toastContainer{position:fixed;top:100px;left:22px;z-index:9999;display:flex;flex-direction:column;gap:10px;width:min(360px,calc(100vw - 44px))}
+.toast{background:#fff;border-right:5px solid #e51d43;border-radius:10px;padding:14px 16px;box-shadow:0 8px 30px #0003;color:#243447;font-size:13px;line-height:1.7;animation:toastIn .25s ease}
+.toast strong{display:block;color:#e51d43;margin-bottom:3px}
+@keyframes toastIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+.notify-btn{height:44px;border:1px solid #dce3ea;border-radius:9px;background:#fff;color:#40566e;padding:0 16px;font-weight:bold;font-size:14px;cursor:pointer}
+.notify-btn:hover{background:#f4f7fa}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:900px}
+thead{background:#f1f5f9}
+th{height:52px;color:#40566e;font-size:13px;font-weight:bold;text-align:center;padding:0 10px}
+td{height:71px;border-top:1px solid #e7edf2;text-align:center;font-size:13px;padding:8px 10px}
+td.name{text-align:right;font-weight:bold;color:#202d3d;font-size:14px}
+.badge{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:6px 11px;font-size:12px;font-weight:bold}
+.ok{background:#d1f6e4;color:#07885c}
+.low{background:#ffe0e7;color:#df1e48}
+.category{background:#eef3f7;color:#60748a;padding:6px 10px;border-radius:6px;font-size:11px}
+.qty{font-weight:bold;color:#27394d}
+.qty.lowqty{color:#e51d43}
+.limit{color:#60748a}
+.stock-actions{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+.stock-actions button{border:0;border-radius:7px;padding:8px 12px;font-size:12px;font-weight:bold;cursor:pointer}
+.stock-add{background:#d5f6e7;color:#07885c}
+.stock-add:hover{background:#bdf0d9}
+.stock-out{background:#ffe1e7;color:#df1e48}
+.stock-out:hover{background:#ffcbd6}
+.controls{display:inline-flex;align-items:center;background:#edf2f6;border:1px solid #dbe4eb;border-radius:8px;padding:3px;gap:3px}
+.controls button{width:30px;height:30px;border:0;border-radius:5px;background:white;color:#008e66;font-size:18px;cursor:pointer}
+.controls button.minus{color:#e52d4d}
+.controls button:hover{background:#f7fafc}
+.controls span{padding:0 7px;color:#52677c;font-size:12px}
+.delete{border:0;background:transparent;color:#8ca1b5;font-size:17px;cursor:pointer}
+.delete:hover{color:#e51d43}
+.empty{text-align:center;padding:45px;color:#8192a4}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:20;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal-box{background:white;width:min(470px,100%);border-radius:14px;padding:22px;box-shadow:0 15px 50px #0004}
+.modal-box h2{margin:0 0 18px;font-size:20px}
+.form-row{margin-bottom:13px}
+.form-row label{display:block;font-size:13px;margin-bottom:6px;color:#52677c}
+.form-row input,.form-row select{width:100%;height:42px;border:1px solid #cbd7e3;border-radius:8px;padding:0 11px;outline:none}
+.modal-actions{display:flex;gap:8px;justify-content:flex-start;margin-top:18px}
+.modal-actions button{height:42px;border:0;border-radius:8px;padding:0 20px;cursor:pointer}
+.save{background:#e57b00;color:#fff}
+.cancel{background:#edf2f6;color:#40566e}
+@media(max-width:800px){
+ .header{min-height:70px;padding:10px 12px;gap:8px}
+ .brand-text h1{font-size:17px}.brand-text span{font-size:9px}
+ .logo-box{width:42px;height:42px;font-size:22px;border-radius:11px}
+ .header-nav{display:none}
+ .header-date{display:none}
+ .user-box small{display:none}
+ .user-icon{width:34px;height:34px;font-size:16px}
+
+ .container{padding:15px 10px}.cards{grid-template-columns:1fr;gap:10px}
+ .card{min-height:76px}.toolbar{flex-direction:column-reverse;align-items:stretch}
+ .search{max-width:none}.add{width:100%}
+ .panel{border-radius:10px}
+}
+
+.site-footer{
+  margin-top:32px;
+  background:#fff;
+  border-top:1px solid #dce3ea;
+  box-shadow:0 -2px 8px #00000008;
+}
+.footer-content{
+  max-width:1488px;
+  min-height:78px;
+  margin:auto;
+  padding:14px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  color:#60748a;
+  font-size:12px;
+}
+.footer-content strong{
+  display:block;
+  color:#b95605;
+  font-size:14px;
+  margin-bottom:4px;
+}
+.footer-content span{display:block;font-size:10px}
+.footer-center{text-align:center}
+.footer-status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#07885c;
+  font-weight:bold;
+}
+.status-dot{
+  width:9px!important;
+  height:9px!important;
+  padding:0!important;
+  border-radius:50%;
+  background:#14b87a;
+  display:inline-block!important;
+}
+@media(max-width:800px){
+  .footer-content{
+    min-height:70px;
+    padding:12px 15px;
+    flex-direction:column;
+    justify-content:center;
+    gap:7px;
+    text-align:center;
+  }
+  .footer-status{justify-content:center}
+}
+
+/* ===== تصميم الهاتف السهل ===== */
+@media (max-width: 800px){
+  body{
+    background:#f4f6f8;
+    font-size:14px;
+    padding-bottom:8px;
+  }
+
+  .header{
+    position:sticky;
+    top:0;
+    min-height:64px;
+    padding:8px 12px;
+    border-radius:0 0 14px 14px;
+  }
+  .header-right{gap:8px}
+  .logo-box{
+    width:40px;height:40px;
+    border-radius:11px;
+    font-size:21px;
+  }
+  .brand-text h1{font-size:16px}
+  .brand-text span{font-size:9px}
+  .header-left{gap:0}
+  .header-date{display:none}
+  .user-box small{display:none}
+  .user-icon{width:34px;height:34px;font-size:15px}
+  .header-nav{display:none}
+
+  .container{
+    width:100%;
+    padding:12px 9px 0;
+  }
+
+  /* بطاقات الإحصائيات */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+    margin-bottom:12px;
+  }
+  .card{
+    min-height:82px;
+    padding:10px 7px;
+    border-radius:11px;
+    flex-direction:column-reverse;
+    justify-content:center;
+    text-align:center;
+    gap:4px;
+  }
+  .card .circle{
+    width:30px;height:30px;
+    font-size:14px;
+  }
+  .card .label{
+    font-size:9px;
+    line-height:1.4;
+    margin:0;
+  }
+  .card .value{
+    font-size:17px;
+    line-height:1.1;
+  }
+
+  /* قائمة النقص */
+  .low-stock-panel{
+    margin-bottom:12px;
+    border-radius:11px;
+  }
+  .low-stock-header{
+    padding:12px;
+  }
+  .low-stock-header h2{font-size:14px}
+  .low-stock-header p{font-size:9px}
+  .low-count{
+    min-width:32px;height:32px;
+    font-size:12px;
+  }
+  .low-stock-list{padding:5px 8px}
+  .low-stock-item{
+    padding:10px 3px;
+  }
+  .low-icon{
+    width:32px;height:32px;
+    font-size:14px;
+  }
+  .low-name{font-size:12px}
+  .low-category{font-size:9px}
+  .low-current{font-size:12px}
+  .low-limit{font-size:9px}
+
+  /* لوحة المخزون */
+  .panel{
+    border-radius:11px;
+  }
+  .toolbar{
+    padding:10px;
+    gap:8px;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .toolbar > div:first-child{
+    width:100%;
+  }
+  .add{
+    width:100%;
+    height:44px;
+    font-size:14px;
+  }
+  .notify-btn{
+    width:100%;
+    height:40px;
+    font-size:12px;
+  }
+  .search{
+    max-width:none;
+    width:100%;
+  }
+  .search input{
+    height:42px;
+    font-size:13px;
+    padding-right:38px;
+  }
+
+  /* تحويل جدول المنتجات إلى بطاقات */
+  .table-wrap{
+    overflow:visible;
+  }
+  table, thead, tbody, tr, th, td{
+    display:block;
+    width:100%;
+  }
+  thead{display:none}
+  tbody{
+    padding:6px;
+  }
+  tbody tr{
+    position:relative;
+    background:#fff;
+    border:1px solid #e2e8ee;
+    border-radius:11px;
+    margin-bottom:8px;
+    padding:10px;
+    min-height:145px;
+    box-shadow:0 1px 3px #00000008;
+  }
+  td{
+    height:auto;
+    border:0;
+    padding:3px 0;
+    text-align:right;
+  }
+  td.name{
+    text-align:right;
+    font-size:14px;
+    padding-left:30px;
+    margin-bottom:4px;
+  }
+  td:nth-child(2){
+    display:inline-block;
+    width:auto;
+    margin-left:5px;
+  }
+  td:nth-child(3),td:nth-child(4){
+    display:inline-block;
+    width:auto;
+    margin-left:8px;
+  }
+  td:nth-child(5){
+    display:inline-block;
+    width:auto;
+  }
+  td:nth-child(6){
+    margin-top:8px;
+  }
+  td:nth-child(7){
+    position:absolute;
+    top:9px;
+    left:9px;
+  }
+  .category{
+    font-size:9px;
+    padding:4px 7px;
+  }
+  .qty,.limit{
+    font-size:11px;
+  }
+  .badge{
+    padding:4px 7px;
+    font-size:9px;
+  }
+  .stock-actions{
+    width:100%;
+    gap:6px;
+  }
+  .stock-actions button{
+    flex:1;
+    min-height:38px;
+    font-size:12px;
+  }
+  .delete{
+    font-size:15px;
+  }
+
+  /* النوافذ */
+  .modal{
+    padding:12px;
+    align-items:flex-end;
+  }
+  .modal-box{
+    width:100%;
+    border-radius:16px 16px 10px 10px;
+    padding:18px;
+    max-height:90vh;
+    overflow:auto;
+  }
+  .modal-box h2{
+    font-size:18px;
+  }
+  .form-row input,.form-row select{
+    height:46px;
+    font-size:14px;
+  }
+  .modal-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .modal-actions button{
+    height:46px;
+  }
+
+  #toastContainer{
+    top:75px;
+    left:10px;
+    width:calc(100vw - 20px);
+  }
+
+  .site-footer{
+    margin-top:14px;
+  }
+  .footer-content{
+    min-height:65px;
+    padding:10px;
+    gap:5px;
+  }
+}
+
+/* هواتف صغيرة جدًا */
+@media (max-width:380px){
+  .cards{gap:5px}
+  .card{min-height:78px;padding:8px 4px}
+  .card .label{font-size:8px}
+  .card .value{font-size:15px}
+  .brand-text h1{font-size:14px}
+  tbody tr{padding:9px;min-height:140px}
+}
+
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-right">
+    <div class="logo-box">🥖</div>
+    <div class="brand-text">
+      <h1>مخبزنا</h1>
+      <span>نظام إدارة المخزون</span>
+    </div>
+  </div>
+
+  <nav class="header-nav">
+    <button class="nav-item active" onclick="window.scrollTo({top:0,behavior:'smooth'})">📦 المخزون</button>
+    <button class="nav-item" onclick="openModal()">＋ إضافة مادة</button>
+  </nav>
+
+  <div class="header-left">
+    <div class="header-date">
+      <span>اليوم</span>
+      <strong id="date"></strong>
+    </div>
+    <div class="user-box">
+      <div class="user-icon">👤</div>
+      <div>
+        <strong>المستخدم</strong>
+        <small>مدير المخزون</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="toastContainer"></div>
+
+
+
+<main class="container">
+  <section class="cards">
+    <div class="card">
+      <div>
+        <div class="label">إجمالي المواد</div>
+        <div class="value" id="totalMaterials">0</div>
+      </div>
+      <div class="circle">📦</div>
+    </div>
+    <div class="card">
+      <div>
+        <div class="label">مواد قريبة من النفاد</div>
+        <div class="value" id="lowMaterials">0</div>
+      </div>
+      <div class="circle">⚠️</div>
+    </div>
+    <div class="card">
+      <div>
+        <div class="label">حالة المخزون</div>
+        <div class="value" id="stockStatus">جيد</div>
+      </div>
+      <div class="circle">✓</div>
+    </div>
+  </section>
+
+  <section class="low-stock-panel" id="lowStockPanel">
+    <div class="low-stock-header">
+      <div>
+        <h2>⚠️ المنتجات الناقصة عن الحد</h2>
+        <p>المواد التي وصلت إلى حد الإنذار أو أقل منه</p>
+      </div>
+      <span class="low-count" id="lowStockCount">0</span>
+    </div>
+    <div id="lowStockList" class="low-stock-list"></div>
+  </section>
+
+  <section class="panel">
+    <div class="toolbar">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+  <button class="add" onclick="openModal()">＋ إضافة مادة جديدة</button>
+  <button class="notify-btn" id="notifyBtn" onclick="enableNotifications()">🔔 تفعيل الإشعارات</button>
+</div>
+      <div class="search">
+        <span>⌕</span>
+        <input id="search" type="text" placeholder="البحث عن مادة..." oninput="render()">
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>اسم المادة / المنتج</th>
+            <th>الفئة</th>
+            <th>الكمية المتوفرة</th>
+            <th>حد الإنذار</th>
+            <th>الحالة</th>
+            <th>تعديل سريع</th>
+            <th>حذف</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+
+<div class="modal" id="stockModal">
+  <div class="modal-box">
+    <h2 id="stockTitle">إضافة كمية</h2>
+    <div class="form-row">
+      <label>المادة</label>
+      <input id="stockName" readonly>
+    </div>
+    <div class="form-row">
+      <label>الكمية</label>
+      <input id="stockAmount" type="number" min="1" value="1" inputmode="numeric">
+    </div>
+    <div class="modal-actions">
+      <button class="save" onclick="saveStockMovement()">حفظ العملية</button>
+      <button class="cancel" onclick="closeStockModal()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h2>إضافة مادة جديدة</h2>
+    <div class="form-row">
+      <label>اسم المادة</label>
+      <input id="newName" placeholder="مثلاً: طحين أبيض">
+    </div>
+    <div class="form-row">
+      <label>الفئة</label>
+      <select id="newCategory">
+        <option>مواد خام</option>
+        <option>منتجات جاهزة</option>
+        <option>مواد تغليف</option>
+        <option>أخرى</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>الكمية</label>
+      <input id="newQty" type="number" min="0" value="0">
+    </div>
+    <div class="form-row">
+      <label>حد الإنذار</label>
+      <input id="newLimit" type="number" min="0" value="10">
+    </div>
+    <div class="modal-actions">
+      <button class="save" onclick="addMaterial()">حفظ</button>
+      <button class="cancel" onclick="closeModal()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const defaultData = [
+ {name:"طحين أبيض (فاخر)",category:"مواد خام",qty:150,limit:30},
+ {name:"خميرة فورية",category:"مواد خام",qty:8,limit:15},
+ {name:"سكر ناعم",category:"مواد خام",qty:40,limit:10},
+ {name:"خبز عربي طازج",category:"منتجات جاهزة",qty:850,limit:150}
+];
+
+let materials = JSON.parse(localStorage.getItem("bakery_inventory") || "null") || defaultData;
+
+function save(){localStorage.setItem("bakery_inventory",JSON.stringify(materials));}
+
+
+let notificationEnabled = localStorage.getItem("bakery_notifications") === "1";
+let notifiedLow = JSON.parse(localStorage.getItem("bakery_notified_low") || "{}");
+
+function showToast(m){
+  const box=document.createElement("div");
+  box.className="toast";
+  box.innerHTML=`<strong>⚠️ تنبيه مخزون المخبز</strong>${escapeHtml(m.name)}: الكمية الحالية <b>${m.qty}</b>، وحد الإنذار <b>${m.limit}</b>.`;
+  document.getElementById("toastContainer").appendChild(box);
+  setTimeout(()=>box.remove(),7000);
+}
+
+function updateNotifyButton(){
+  const btn=document.getElementById("notifyBtn");
+  if(!btn) return;
+  if(!("Notification" in window)){
+    btn.textContent="🔔 إشعار داخل الصفحة";
+    return;
+  }
+  if(Notification.permission==="granted" && notificationEnabled){
+    btn.textContent="🔔 الإشعارات مفعلة";
+  }else{
+    btn.textContent="🔔 تفعيل إشعارات المتصفح";
+  }
+}
+
+async function enableNotifications(){
+  // إشعار داخل الصفحة يعمل حتى عند فتح الملف محلياً
+  notificationEnabled=true;
+  localStorage.setItem("bakery_notifications","1");
+
+  if("Notification" in window){
+    try{
+      const permission=await Notification.requestPermission();
+      if(permission==="granted"){
+        new Notification("نظام المخبز",{
+          body:"تم تفعيل إشعارات انخفاض المخزون بنجاح 🔔"
+        });
+      }
+    }catch(e){
+      console.log("Browser notification unavailable:",e);
+    }
+  }
+
+  updateNotifyButton();
+  materials.filter(m=>Number(m.qty)<=Number(m.limit)).forEach(m=>{
+    showToast(m);
+  });
+}
+
+function checkLowStock(){
+  materials.forEach((m,index)=>{
+    const key=index+":"+m.name;
+    const isLow=Number(m.qty)<=Number(m.limit);
+
+    if(isLow && !notifiedLow[key]){
+      // يظهر داخل الصفحة دائماً
+      showToast(m);
+
+      // ويحاول إرسال إشعار المتصفح إذا كان مسموحاً
+      if(notificationEnabled && "Notification" in window && Notification.permission==="granted"){
+        try{
+          new Notification("⚠️ تنبيه مخزون المخبز",{
+            body:`${m.name}: الكمية الحالية ${m.qty}، وحد الإنذار ${m.limit}.`
+          });
+        }catch(e){}
+      }
+      notifiedLow[key]=Date.now();
+    }
+
+    if(!isLow && notifiedLow[key]){
+      delete notifiedLow[key];
+    }
+  });
+
+  localStorage.setItem("bakery_notified_low",JSON.stringify(notifiedLow));
+}
+
+
+function renderLowStock(){
+  const list=document.getElementById("lowStockList");
+  const count=document.getElementById("lowStockCount");
+  if(!list || !count) return;
+
+  const lowItems=materials.filter(m=>Number(m.qty)<=Number(m.limit));
+  count.textContent=lowItems.length;
+
+  if(lowItems.length===0){
+    list.innerHTML='<div class="low-empty">✓ جميع المنتجات ضمن الحد المطلوب</div>';
+    return;
+  }
+
+  list.innerHTML=lowItems.map(m=>`
+    <div class="low-stock-item">
+      <div class="low-product">
+        <div class="low-icon">⚠️</div>
+        <div>
+          <div class="low-name">${escapeHtml(m.name)}</div>
+          <span class="low-category">${escapeHtml(m.category)}</span>
+        </div>
+      </div>
+      <div class="low-values">
+        <div class="low-current">${m.qty} ${unitFor(m)}</div>
+        <span class="low-limit">الحد: ${m.limit} ${unitFor(m)}</span>
+      </div>
+    </div>
+  `).join("");
+}
+
+function render(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const body=document.getElementById("tableBody");
+ const list=materials.filter(x=>x.name.toLowerCase().includes(q)||x.category.toLowerCase().includes(q));
+ if(!list.length){
+   body.innerHTML='<tr><td colspan="7" class="empty">لا توجد مواد مطابقة للبحث</td></tr>';
+ }else{
+   body.innerHTML=list.map((m)=>{
+     const realIndex=materials.indexOf(m);
+     const low=m.qty<=m.limit;
+     return `<tr>
+       <td class="name">${escapeHtml(m.name)}</td>
+       <td><span class="category">${escapeHtml(m.category)}</span></td>
+       <td class="qty ${low?'lowqty':''}">${m.qty} ${unitFor(m)}</td>
+       <td class="limit">${m.limit} ${unitFor(m)}</td>
+       <td><span class="badge ${low?'low':'ok'}">${low?'● ينقص عن الحد':'✓ متوفر'}</span></td>
+       <td>
+         <div class="stock-actions">
+           <button class="stock-add" onclick="openStockModal(${realIndex},'add')">＋ إضافة</button>
+           <button class="stock-out" onclick="openStockModal(${realIndex},'out')">− سحب</button>
+         </div>
+       </td>
+       <td><button class="delete" onclick="removeMaterial(${realIndex})">♜</button></td>
+     </tr>`;
+   }).join("");
+ }
+ const lowCount=materials.filter(x=>x.qty<=x.limit).length;
+ document.getElementById("totalMaterials").textContent=materials.length;
+ document.getElementById("lowMaterials").textContent=lowCount;
+ const status=document.getElementById("stockStatus");
+ status.textContent=lowCount ? "تحتاج انتباه" : "جيد";
+ status.style.color=lowCount ? "#e57b00" : "#008b61";
+ renderLowStock();
+}
+
+function unitFor(m){
+ if(m.name.includes("خبز")) return "ربطة";
+ if(m.name.includes("طحين")||m.name.includes("سكر")||m.name.includes("خميرة")) return "كغم";
+ return "وحدة";
+}
+function changeQty(i,delta){
+ materials[i].qty=Math.max(0,materials[i].qty+delta);
+ save();render();checkLowStock();
+}
+function removeMaterial(i){
+ if(confirm("هل تريد حذف المادة؟")){
+   materials.splice(i,1);save();render();checkLowStock();
+ }
+}
+
+let stockIndex = -1;
+let stockAction = "add";
+
+function openStockModal(index, action){
+  stockIndex=index;
+  stockAction=action;
+  const m=materials[index];
+  document.getElementById("stockTitle").textContent = action==="add" ? "➕ إضافة كمية" : "➖ سحب كمية";
+  document.getElementById("stockName").value=m.name;
+  document.getElementById("stockAmount").value=1;
+  document.getElementById("stockAmount").max = action==="out" ? m.qty : "";
+  document.getElementById("stockModal").classList.add("show");
+  setTimeout(()=>document.getElementById("stockAmount").focus(),100);
+}
+
+function closeStockModal(){
+  document.getElementById("stockModal").classList.remove("show");
+  stockIndex=-1;
+}
+
+function saveStockMovement(){
+  if(stockIndex<0) return;
+
+  const amount=Number(document.getElementById("stockAmount").value);
+  if(!Number.isFinite(amount) || amount<=0){
+    alert("أدخل كمية صحيحة.");
+    return;
+  }
+
+  const m=materials[stockIndex];
+
+  if(stockAction==="out"){
+    if(amount>m.qty){
+      alert(`لا يمكن سحب ${amount}. الكمية المتوفرة فقط ${m.qty}.`);
+      return;
+    }
+    m.qty-=amount;
+  }else{
+    m.qty+=amount;
+  }
+
+  save();
+  render();
+  checkLowStock();
+  closeStockModal();
+}
+
+
+function openModal(){document.getElementById("modal").classList.add("show");document.getElementById("newName").focus();}
+function closeModal(){document.getElementById("modal").classList.remove("show");}
+function addMaterial(){
+ const name=document.getElementById("newName").value.trim();
+ const category=document.getElementById("newCategory").value;
+ const qty=Number(document.getElementById("newQty").value);
+ const limit=Number(document.getElementById("newLimit").value);
+ if(!name){alert("اكتب اسم المادة");return;}
+ materials.push({name,category,qty:Math.max(0,qty),limit:Math.max(0,limit)});
+ save();render();checkLowStock();closeModal();
+ document.getElementById("newName").value="";
+ document.getElementById("newQty").value="0";
+ document.getElementById("newLimit").value="10";
+}
+function escapeHtml(s){
+ return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+document.getElementById("date").textContent=new Intl.DateTimeFormat("ar-IQ",{weekday:"long",year:"numeric",month:"long",day:"numeric"}).format(new Date());
+render();
+updateNotifyButton();
+
+// فحص أولي بعد تحميل الصفحة
+setTimeout(()=>checkLowStock(),500);
+
+// إعادة فحص المخزون كل دقيقة
+setInterval(checkLowStock,60000);
+</script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div>
+      <strong>🥖 مخبزنا</strong>
+      <span>نظام إدارة المخزون</span>
+    </div>
+    <div class="footer-center">
+      جميع الحقوق محفوظة © 2026
+    </div>
+    <div class="footer-status">
+      <span class="status-dot"></span>
+      النظام يعمل
+    </div>
+  </div>
+</footer>
+</body>
+</html>
