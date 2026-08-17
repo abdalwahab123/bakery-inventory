@@ -9,18 +9,15 @@
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-
 body{
   font-family:Tahoma,Arial,sans-serif;
   background:#f5f7f9;
   color:#263548;
   direction:rtl;
 }
-
 button,input,select{font-family:inherit}
 button{cursor:pointer}
 
-/* ===== HEADER ===== */
 .header{
   position:sticky;
   top:0;
@@ -35,39 +32,16 @@ button{cursor:pointer}
   gap:20px;
   box-shadow:0 3px 12px #0002;
 }
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
+.brand{display:flex;align-items:center;gap:10px}
 .logo{
-  width:44px;
-  height:44px;
-  border-radius:12px;
+  width:44px;height:44px;border-radius:12px;
   background:#fff1dd;
-  display:grid;
-  place-items:center;
+  display:grid;place-items:center;
   font-size:24px;
 }
-
-.brand h1{
-  font-size:19px;
-  margin:0;
-}
-
-.brand small{
-  font-size:10px;
-  color:#ffe6c7;
-}
-
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-
+.brand h1{font-size:19px;margin:0}
+.brand small{font-size:10px;color:#ffe6c7}
+.header-actions{display:flex;align-items:center;gap:7px}
 .header-btn{
   border:1px solid #ffffff44;
   background:#ffffff18;
@@ -76,55 +50,32 @@ button{cursor:pointer}
   border-radius:8px;
   font-size:12px;
 }
-
-.header-btn:hover{
-  background:#fff;
-  color:#b65305;
-}
-
+.header-btn:hover{background:#fff;color:#b65305}
 .user{
-  display:flex;
-  align-items:center;
-  gap:8px;
+  display:flex;align-items:center;gap:8px;
   padding-right:14px;
   border-right:1px solid #ffffff44;
 }
-
 .user-icon{
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  background:#fff1dd;
-  color:#a34c04;
-  display:grid;
-  place-items:center;
+  width:35px;height:35px;border-radius:50%;
+  background:#fff1dd;color:#a34c04;
+  display:grid;place-items:center;
 }
+.user small{display:block;font-size:9px;color:#ffe6c7}
+.user strong{font-size:11px}
 
-.user small{
-  display:block;
-  font-size:9px;
-  color:#ffe6c7;
-}
-
-.user strong{
-  font-size:11px;
-}
-
-/* ===== CONTAINER ===== */
 .container{
   width:min(1450px,calc(100% - 40px));
   margin:auto;
   padding:20px 0;
 }
 
-/* ===== SUMMARY ===== */
 .summary{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:14px;
   margin-bottom:18px;
 }
-
 .summary-card{
   background:#fff;
   border:1px solid #dfe6ec;
@@ -135,58 +86,25 @@ button{cursor:pointer}
   align-items:center;
   justify-content:space-between;
 }
-
 .summary-icon{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:19px;
+  width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;font-size:19px;
 }
+.summary-card:nth-child(1) .summary-icon{background:#fff0c9}
+.summary-card:nth-child(2) .summary-icon{background:#ffe0e6}
+.summary-card:nth-child(3) .summary-icon{background:#d4f7e6}
+.summary-label{font-size:12px;color:#718196;margin-bottom:5px}
+.summary-value{font-size:22px;font-weight:bold;color:#d76c00}
+.summary-card:nth-child(2) .summary-value{color:#df2048}
+.summary-card:nth-child(3) .summary-value{color:#07885c}
 
-.summary-card:nth-child(1) .summary-icon{
-  background:#fff0c9;
-}
-
-.summary-card:nth-child(2) .summary-icon{
-  background:#ffe0e6;
-}
-
-.summary-card:nth-child(3) .summary-icon{
-  background:#d4f7e6;
-}
-
-.summary-label{
-  font-size:12px;
-  color:#718196;
-  margin-bottom:5px;
-}
-
-.summary-value{
-  font-size:22px;
-  font-weight:bold;
-  color:#d76c00;
-}
-
-.summary-card:nth-child(2) .summary-value{
-  color:#df2048;
-}
-
-.summary-card:nth-child(3) .summary-value{
-  color:#07885c;
-}
-
-/* ===== LOW STOCK ===== */
-.low-panel,
-.inventory-panel{
+.low-panel,.inventory-panel{
   background:#fff;
   border:1px solid #dfe6ec;
   border-radius:13px;
   overflow:hidden;
   margin-bottom:18px;
 }
-
 .low-head{
   background:#fff7f8;
   border-bottom:1px solid #f1dce0;
@@ -195,34 +113,14 @@ button{cursor:pointer}
   align-items:center;
   justify-content:space-between;
 }
-
-.low-head h2{
-  margin:0;
-  font-size:15px;
-  color:#d92046;
-}
-
-.low-head p{
-  margin:4px 0 0;
-  font-size:10px;
-  color:#81909f;
-}
-
+.low-head h2{margin:0;font-size:15px;color:#d92046}
+.low-head p{margin:4px 0 0;font-size:10px;color:#81909f}
 .low-count{
-  min-width:35px;
-  height:35px;
-  border-radius:50%;
-  background:#ffe0e6;
-  color:#d92046;
-  display:grid;
-  place-items:center;
-  font-weight:bold;
+  min-width:35px;height:35px;border-radius:50%;
+  background:#ffe0e6;color:#d92046;
+  display:grid;place-items:center;font-weight:bold;
 }
-
-.low-list{
-  padding:8px 12px;
-}
-
+.low-list{padding:8px 12px}
 .low-item{
   display:flex;
   justify-content:space-between;
@@ -231,36 +129,11 @@ button{cursor:pointer}
   padding:10px 6px;
   border-bottom:1px solid #edf1f4;
 }
-
-.low-item:last-child{
-  border-bottom:0;
-}
-
-.low-name{
-  font-weight:bold;
-  font-size:12px;
-}
-
-.low-category{
-  font-size:9px;
-  color:#8997a5;
-  margin-top:3px;
-}
-
-.low-qty{
-  text-align:left;
-  color:#df2048;
-  font-weight:bold;
-  font-size:12px;
-}
-
-.low-limit{
-  display:block;
-  color:#8493a2;
-  font-size:9px;
-  margin-top:3px;
-}
-
+.low-item:last-child{border-bottom:0}
+.low-name{font-weight:bold;font-size:12px}
+.low-category{font-size:9px;color:#8997a5;margin-top:3px}
+.low-qty{text-align:left;color:#df2048;font-weight:bold;font-size:12px}
+.low-limit{display:block;color:#8493a2;font-size:9px;margin-top:3px}
 .low-empty{
   text-align:center;
   padding:22px;
@@ -269,7 +142,6 @@ button{cursor:pointer}
   font-weight:bold;
 }
 
-/* ===== TOOLBAR ===== */
 .toolbar{
   padding:14px;
   display:flex;
@@ -278,14 +150,8 @@ button{cursor:pointer}
   gap:10px;
   border-bottom:1px solid #e6ebef;
 }
-
-.toolbar-buttons{
-  display:flex;
-  gap:7px;
-}
-
-.add,
-.notify{
+.toolbar-buttons{display:flex;gap:7px}
+.add,.notify{
   height:42px;
   border:0;
   border-radius:8px;
@@ -293,27 +159,14 @@ button{cursor:pointer}
   font-weight:bold;
   font-size:12px;
 }
-
-.add{
-  background:#e47a00;
-  color:#fff;
-}
-
-.add:hover{
-  background:#c96600;
-}
-
+.add{background:#e47a00;color:#fff}
+.add:hover{background:#c96600}
 .notify{
   background:#f2f5f7;
   border:1px solid #dce4ea;
   color:#4b6177;
 }
-
-.search{
-  position:relative;
-  width:min(430px,100%);
-}
-
+.search{position:relative;width:min(430px,100%)}
 .search input{
   width:100%;
   height:42px;
@@ -323,7 +176,6 @@ button{cursor:pointer}
   padding:0 38px 0 12px;
   font-size:12px;
 }
-
 .search span{
   position:absolute;
   right:13px;
@@ -332,28 +184,15 @@ button{cursor:pointer}
   font-size:19px;
 }
 
-/* ===== TABLE ===== */
-.table-wrap{
-  overflow-x:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:850px;
-}
-
-thead{
-  background:#f1f5f8;
-}
-
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:850px}
+thead{background:#f1f5f8}
 th{
   height:48px;
   color:#40566e;
   font-size:12px;
   padding:0 8px;
 }
-
 td{
   height:68px;
   border-top:1px solid #e8edf1;
@@ -361,13 +200,7 @@ td{
   font-size:12px;
   padding:7px 8px;
 }
-
-td.name{
-  text-align:right;
-  font-weight:bold;
-  font-size:13px;
-}
-
+td.name{text-align:right;font-weight:bold;font-size:13px}
 .category{
   display:inline-block;
   background:#eef3f7;
@@ -376,19 +209,9 @@ td.name{
   padding:5px 8px;
   font-size:10px;
 }
-
-.qty{
-  font-weight:bold;
-}
-
-.qty.low{
-  color:#df2048;
-}
-
-.limit{
-  color:#60748a;
-}
-
+.qty{font-weight:bold}
+.qty.low{color:#df2048}
+.limit{color:#60748a}
 .status{
   display:inline-block;
   padding:5px 9px;
@@ -396,24 +219,9 @@ td.name{
   font-size:9px;
   font-weight:bold;
 }
-
-.status.ok{
-  background:#d2f6e4;
-  color:#07885c;
-}
-
-.status.low{
-  background:#ffe0e6;
-  color:#df2048;
-}
-
-/* ===== ADD / OUT ===== */
-.stock-actions{
-  display:flex;
-  justify-content:center;
-  gap:5px;
-}
-
+.status.ok{background:#d2f6e4;color:#07885c}
+.status.low{background:#ffe0e6;color:#df2048}
+.stock-actions{display:flex;justify-content:center;gap:5px}
 .stock-actions button{
   border:0;
   border-radius:7px;
@@ -422,32 +230,18 @@ td.name{
   font-size:11px;
   font-weight:bold;
 }
-
-.btn-add{
-  background:#d6f6e7;
-  color:#07885c;
-}
-
-.btn-out{
-  background:#ffe0e6;
-  color:#df2048;
-}
-
+.btn-add{background:#d6f6e7;color:#07885c}
+.btn-out{background:#ffe0e6;color:#df2048}
 .delete{
-  width:32px;
-  height:32px;
-  border:0;
-  border-radius:7px;
-  background:#fff1f3;
-  color:#d92046;
+  width:32px;height:32px;
+  border:0;border-radius:7px;
+  background:#fff1f3;color:#d92046;
 }
-
 .empty{
   padding:30px!important;
   color:#8796a5;
 }
 
-/* ===== MODALS ===== */
 .modal{
   display:none;
   position:fixed;
@@ -458,11 +252,7 @@ td.name{
   justify-content:center;
   padding:18px;
 }
-
-.modal.show{
-  display:flex;
-}
-
+.modal.show{display:flex}
 .modal-box{
   width:min(460px,100%);
   background:#fff;
@@ -470,25 +260,15 @@ td.name{
   padding:20px;
   box-shadow:0 20px 60px #0004;
 }
-
-.modal-box h2{
-  margin:0 0 16px;
-  font-size:18px;
-}
-
-.form-row{
-  margin-bottom:12px;
-}
-
+.modal-box h2{margin:0 0 16px;font-size:18px}
+.form-row{margin-bottom:12px}
 .form-row label{
   display:block;
   font-size:11px;
   color:#5d7083;
   margin-bottom:5px;
 }
-
-.form-row input,
-.form-row select{
+.form-row input,.form-row select{
   width:100%;
   height:43px;
   border:1px solid #cbd7e2;
@@ -497,13 +277,7 @@ td.name{
   padding:0 10px;
   font-size:13px;
 }
-
-.modal-actions{
-  display:flex;
-  gap:7px;
-  margin-top:16px;
-}
-
+.modal-actions{display:flex;gap:7px;margin-top:16px}
 .modal-actions button{
   flex:1;
   height:43px;
@@ -511,18 +285,9 @@ td.name{
   border-radius:8px;
   font-weight:bold;
 }
+.save{background:#e47a00;color:#fff}
+.cancel{background:#edf1f4;color:#42576c}
 
-.save{
-  background:#e47a00;
-  color:#fff;
-}
-
-.cancel{
-  background:#edf1f4;
-  color:#42576c;
-}
-
-/* ===== TOAST ===== */
 .toast-container{
   position:fixed;
   top:82px;
@@ -530,7 +295,6 @@ td.name{
   z-index:1000;
   width:min(350px,calc(100% - 30px));
 }
-
 .toast{
   background:#fff;
   border-right:4px solid #df2048;
@@ -540,20 +304,13 @@ td.name{
   box-shadow:0 8px 25px #0003;
   font-size:11px;
 }
+.toast strong{display:block;color:#df2048;margin-bottom:3px}
 
-.toast strong{
-  display:block;
-  color:#df2048;
-  margin-bottom:3px;
-}
-
-/* ===== FOOTER ===== */
 .footer{
   background:#fff;
   border-top:1px solid #dfe6ec;
   margin-top:20px;
 }
-
 .footer-inner{
   width:min(1450px,calc(100% - 40px));
   min-height:70px;
@@ -565,63 +322,23 @@ td.name{
   font-size:10px;
   color:#7a8a9a;
 }
+.footer-brand{color:#b65305;font-weight:bold;font-size:12px}
+.online{color:#07885c;font-weight:bold}
 
-.footer-brand{
-  color:#b65305;
-  font-weight:bold;
-  font-size:12px;
-}
-
-.online{
-  color:#07885c;
-  font-weight:bold;
-}
-
-/* ===== PHONE ===== */
 @media(max-width:800px){
-
-  body{
-    background:#f5f7f9;
-  }
-
+  body{background:#f5f7f9}
   .header{
     min-height:62px;
     padding:8px 11px;
     border-radius:0 0 14px 14px;
   }
-
-  .logo{
-    width:38px;
-    height:38px;
-    font-size:20px;
-    border-radius:10px;
-  }
-
-  .brand h1{
-    font-size:15px;
-  }
-
-  .brand small{
-    font-size:8px;
-  }
-
-  .header-actions{
-    display:none;
-  }
-
-  .user{
-    border:0;
-    padding:0;
-  }
-
-  .user div:last-child{
-    display:none;
-  }
-
-  .user-icon{
-    width:34px;
-    height:34px;
-  }
+  .logo{width:38px;height:38px;font-size:20px;border-radius:10px}
+  .brand h1{font-size:15px}
+  .brand small{font-size:8px}
+  .header-actions{display:none}
+  .user{border:0;padding:0}
+  .user div:last-child{display:none}
+  .user-icon{width:34px;height:34px}
 
   .container{
     width:100%;
@@ -633,7 +350,6 @@ td.name{
     gap:6px;
     margin-bottom:10px;
   }
-
   .summary-card{
     min-height:78px;
     padding:7px 3px;
@@ -643,126 +359,54 @@ td.name{
     text-align:center;
     border-radius:11px;
   }
+  .summary-icon{width:28px;height:28px;font-size:13px}
+  .summary-label{font-size:8px;line-height:1.3;margin:0}
+  .summary-value{font-size:16px}
 
-  .summary-icon{
-    width:28px;
-    height:28px;
-    font-size:13px;
-  }
-
-  .summary-label{
-    font-size:8px;
-    line-height:1.3;
-    margin:0;
-  }
-
-  .summary-value{
-    font-size:16px;
-  }
-
-  .low-panel,
-  .inventory-panel{
+  .low-panel,.inventory-panel{
     border-radius:11px;
     margin-bottom:10px;
   }
-
-  .low-head{
-    padding:11px;
-  }
-
-  .low-head h2{
-    font-size:13px;
-  }
-
-  .low-head p{
-    font-size:8px;
-  }
-
-  .low-count{
-    min-width:30px;
-    height:30px;
-    font-size:11px;
-  }
-
-  .low-list{
-    padding:5px 9px;
-  }
-
-  .low-item{
-    padding:9px 2px;
-  }
-
-  .low-name{
-    font-size:11px;
-  }
-
-  .low-category{
-    font-size:8px;
-  }
-
-  .low-qty{
-    font-size:11px;
-  }
-
-  .low-limit{
-    font-size:8px;
-  }
-
-  .low-empty{
-    padding:17px;
-    font-size:10px;
-  }
+  .low-head{padding:11px}
+  .low-head h2{font-size:13px}
+  .low-head p{font-size:8px}
+  .low-count{min-width:30px;height:30px;font-size:11px}
+  .low-list{padding:5px 9px}
+  .low-item{padding:9px 2px}
+  .low-name{font-size:11px}
+  .low-category{font-size:8px}
+  .low-qty{font-size:11px}
+  .low-limit{font-size:8px}
+  .low-empty{padding:17px;font-size:10px}
 
   .toolbar{
     padding:9px;
     flex-direction:column;
     align-items:stretch;
   }
-
   .toolbar-buttons{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:6px;
   }
-
-  .add,
-  .notify{
+  .add,.notify{
     width:100%;
     height:42px;
     padding:0 5px;
     font-size:10px;
   }
+  .search{width:100%}
+  .search input{height:42px;font-size:12px}
 
-  .search{
-    width:100%;
-  }
-
-  .search input{
-    height:42px;
-    font-size:12px;
-  }
-
-  /* تحويل المنتجات إلى بطاقات */
-  .table-wrap{
-    overflow:visible;
-  }
-
-  table{
-    display:block;
-    min-width:0;
-  }
-
-  thead{
-    display:none;
-  }
-
+  .table-wrap{overflow:visible}
+  table{display:block;min-width:0}
+  thead{display:none}
   tbody{
     display:flex;
     flex-direction:column;
     gap:8px;
     padding:8px;
   }
-
   tbody tr{
     display:grid;
     grid-template-columns:1fr auto;
@@ -771,7 +415,6 @@ td.name{
       "category status"
       "qty limit"
       "actions actions";
-
     gap:3px 8px;
     min-height:0;
     padding:11px;
@@ -780,7 +423,6 @@ td.name{
     background:#fff;
     box-shadow:0 2px 7px #00000009;
   }
-
   tbody td{
     display:block!important;
     width:auto!important;
@@ -789,38 +431,13 @@ td.name{
     padding:2px 0!important;
     text-align:right!important;
   }
-
-  tbody td:nth-child(1){
-    grid-area:name;
-  }
-
-  tbody td:nth-child(2){
-    grid-area:category;
-  }
-
-  tbody td:nth-child(3){
-    grid-area:qty;
-  }
-
-  tbody td:nth-child(4){
-    grid-area:limit;
-  }
-
-  tbody td:nth-child(5){
-    grid-area:status;
-    text-align:left!important;
-  }
-
-  tbody td:nth-child(6){
-    grid-area:actions;
-    padding-top:8px!important;
-  }
-
-  tbody td:nth-child(7){
-    grid-area:delete;
-    justify-self:end;
-  }
-
+  tbody td:nth-child(1){grid-area:name}
+  tbody td:nth-child(2){grid-area:category}
+  tbody td:nth-child(3){grid-area:qty}
+  tbody td:nth-child(4){grid-area:limit}
+  tbody td:nth-child(5){grid-area:status;text-align:left!important}
+  tbody td:nth-child(6){grid-area:actions;padding-top:8px!important}
+  tbody td:nth-child(7){grid-area:delete;justify-self:end}
   td.name{
     font-size:13px!important;
     padding-bottom:5px!important;
@@ -828,86 +445,49 @@ td.name{
     overflow:hidden;
     text-overflow:ellipsis;
   }
-
   tbody td:nth-child(2)::before{
     content:"الفئة: ";
     color:#8a98a7;
     font-size:8px;
   }
-
   tbody td:nth-child(3)::before{
     content:"المتوفر: ";
     color:#8a98a7;
     font-size:8px;
   }
-
   tbody td:nth-child(4)::before{
     content:"الحد: ";
     color:#8a98a7;
     font-size:8px;
   }
-
-  .category{
-    font-size:8px;
-    padding:3px 6px;
-  }
-
-  .qty,
-  .limit{
-    font-size:10px;
-  }
-
-  .status{
-    font-size:8px;
-    padding:4px 7px;
-  }
-
+  .category{font-size:8px;padding:3px 6px}
+  .qty,.limit{font-size:10px}
+  .status{font-size:8px;padding:4px 7px}
   .stock-actions{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:6px;
   }
-
   .stock-actions button{
     height:40px;
     min-width:0;
     font-size:11px;
   }
-
-  .delete{
-    width:29px;
-    height:29px;
-    font-size:12px;
-  }
+  .delete{width:29px;height:29px;font-size:12px}
 
   .modal{
     padding:0;
     align-items:flex-end;
   }
-
   .modal-box{
     width:100%;
     border-radius:17px 17px 0 0;
     padding:18px 14px calc(18px + env(safe-area-inset-bottom));
   }
-
-  .modal-box h2{
-    font-size:17px;
-  }
-
-  .form-row input,
-  .form-row select{
-    height:46px;
-    font-size:14px;
-  }
-
-  .modal-actions{
-    margin-top:12px;
-  }
-
-  .modal-actions button{
-    height:46px;
-  }
+  .modal-box h2{font-size:17px}
+  .form-row input,.form-row select{height:46px;font-size:14px}
+  .modal-actions{margin-top:12px}
+  .modal-actions button{height:46px}
 
   .toast-container{
     top:70px;
@@ -927,34 +507,114 @@ td.name{
 }
 
 @media(max-width:370px){
+  .summary-card{min-height:74px}
+  .summary-label{font-size:7px}
+  .summary-value{font-size:15px}
+  .add,.notify{font-size:9px}
+}
 
-  .summary-card{
-    min-height:74px;
+/* ===== FOOTER INFORMATION ===== */
+.footer{
+  background:#fff;
+  border-top:1px solid #dfe6ec;
+  margin-top:20px;
+  padding:0;
+}
+
+.footer-inner{
+  width:min(1450px,calc(100% - 40px));
+  margin:auto;
+}
+
+.footer-info{
+  min-height:130px;
+  padding:20px 0;
+  display:grid;
+  grid-template-columns:1.1fr 1.6fr 1.5fr 1fr;
+  gap:24px;
+  align-items:start;
+}
+
+.footer-brand strong,
+.footer-section strong{
+  display:block;
+  color:#b65305;
+  font-size:12px;
+  margin-bottom:7px;
+}
+
+.footer-brand span,
+.footer-section span{
+  display:block;
+  color:#718196;
+  font-size:10px;
+  line-height:1.8;
+}
+
+.footer-section{
+  border-right:1px solid #e5e9ed;
+  padding-right:18px;
+}
+
+.footer-section.developer span{
+  color:#263548;
+  font-weight:bold;
+  font-size:12px;
+}
+
+.footer-section.developer small{
+  display:block;
+  color:#8997a5;
+  font-size:9px;
+  margin-top:7px;
+}
+
+@media(max-width:800px){
+  .footer-info{
+    width:100%;
+    padding:16px 12px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
   }
 
-  .summary-label{
-    font-size:7px;
+  .footer-brand,
+  .footer-section{
+    width:100%;
+    border-right:0;
+    border-bottom:1px solid #edf0f3;
+    padding:0 0 12px;
   }
 
-  .summary-value{
-    font-size:15px;
+  .footer-section:last-child{
+    border-bottom:0;
+    padding-bottom:0;
   }
 
-  .add,
-  .notify{
+  .footer-brand strong,
+  .footer-section strong{
+    font-size:11px;
+  }
+
+  .footer-brand span,
+  .footer-section span{
     font-size:9px;
+    line-height:1.8;
+  }
+
+  .footer-section.developer span{
+    font-size:11px;
   }
 }
+
 </style>
 </head>
 
 <body>
 
 <header class="header">
-
   <div class="brand">
     <div class="logo">🥖</div>
-
     <div>
       <h1>مخبزنا</h1>
       <small>نظام إدارة المخزون</small>
@@ -962,39 +622,29 @@ td.name{
   </div>
 
   <div class="header-actions">
-    <button class="header-btn" onclick="scrollToInventory()">
-      📦 المخزون
-    </button>
-
-    <button class="header-btn" onclick="openAddModal()">
-      ＋ إضافة مادة
-    </button>
+    <button class="header-btn" onclick="scrollToInventory()">📦 المخزون</button>
+    <button class="header-btn" onclick="openAddModal()">＋ إضافة مادة</button>
   </div>
 
   <div class="user">
     <div class="user-icon">👤</div>
-
     <div>
       <strong>مدير المخزون</strong>
       <small id="date">النظام يعمل</small>
     </div>
   </div>
-
 </header>
 
 <div id="toastContainer" class="toast-container"></div>
 
 <main class="container">
 
-  <!-- الإحصائيات -->
   <section class="summary">
-
     <div class="summary-card">
       <div>
         <div class="summary-label">إجمالي المواد</div>
         <div class="summary-value" id="totalMaterials">0</div>
       </div>
-
       <div class="summary-icon">📦</div>
     </div>
 
@@ -1003,7 +653,6 @@ td.name{
         <div class="summary-label">مواد ناقصة</div>
         <div class="summary-value" id="lowMaterials">0</div>
       </div>
-
       <div class="summary-icon">⚠️</div>
     </div>
 
@@ -1012,68 +661,39 @@ td.name{
         <div class="summary-label">حالة المخزون</div>
         <div class="summary-value" id="stockStatus">جيد</div>
       </div>
-
       <div class="summary-icon">✓</div>
     </div>
-
   </section>
 
-  <!-- المنتجات الناقصة -->
   <section class="low-panel">
-
     <div class="low-head">
-
       <div>
         <h2>⚠️ المنتجات الناقصة</h2>
         <p>المواد التي وصلت إلى حد الإنذار أو أقل</p>
       </div>
-
       <div class="low-count" id="lowStockCount">0</div>
-
     </div>
-
     <div id="lowStockList" class="low-list"></div>
-
   </section>
 
-  <!-- المخزون -->
   <section class="inventory-panel" id="inventoryPanel">
-
     <div class="toolbar">
 
       <div class="toolbar-buttons">
-
-        <button class="add" onclick="openAddModal()">
-          ＋ إضافة مادة
-        </button>
-
-        <button class="notify" id="notifyBtn" onclick="enableNotifications()">
-          🔔 الإشعارات
-        </button>
-
+        <button class="add" onclick="openAddModal()">＋ إضافة مادة</button>
+        <button class="notify" id="notifyBtn" onclick="enableNotifications()">🔔 الإشعارات</button>
       </div>
 
       <div class="search">
-
         <span>⌕</span>
-
-        <input
-          id="search"
-          type="text"
-          placeholder="ابحث عن مادة..."
-          oninput="render()"
-        >
-
+        <input id="search" type="text" placeholder="ابحث عن مادة..." oninput="render()">
       </div>
 
     </div>
 
     <div class="table-wrap">
-
       <table>
-
         <thead>
-
           <tr>
             <th>اسم المادة</th>
             <th>الفئة</th>
@@ -1083,1189 +703,545 @@ td.name{
             <th>العملية</th>
             <th>حذف</th>
           </tr>
-
         </thead>
-
         <tbody id="tableBody"></tbody>
-
       </table>
-
     </div>
-
   </section>
 
 </main>
 
 <footer class="footer">
-
   <div class="footer-inner">
-
-    <div class="footer-brand">
-      🥖 مخبزنا - إدارة المخزون
-    </div>
-
-    <div>
-      جميع الحقوق محفوظة © 2026
-    </div>
-
-    <div class="online">
-      ● النظام يعمل
-    </div>
-
+    <div class="footer-brand">🥖 مخبزنا - إدارة المخزون</div>
+    <div>جميع الحقوق محفوظة © 2026</div>
+    <div class="online">● النظام يعمل</div>
   </div>
-
 </footer>
 
-<!-- نافذة إضافة مادة -->
+<!-- إضافة مادة -->
 <div class="modal" id="addModal">
-
   <div class="modal-box">
-
     <h2>＋ إضافة مادة جديدة</h2>
 
     <div class="form-row">
-
       <label>اسم المادة</label>
-
-      <input
-        id="newName"
-        type="text"
-        placeholder="مثلاً: طحين أبيض"
-      >
-
+      <input id="newName" type="text" placeholder="مثلاً: طحين أبيض">
     </div>
 
     <div class="form-row">
-
       <label>الفئة</label>
-
       <select id="newCategory">
-
         <option>مواد خام</option>
         <option>منتجات جاهزة</option>
         <option>مواد تغليف</option>
         <option>أخرى</option>
-
       </select>
-
     </div>
 
     <div class="form-row">
-
       <label>الكمية الحالية</label>
-
-      <input
-        id="newQty"
-        type="number"
-        min="0"
-        value="0"
-        inputmode="decimal"
-      >
-
+      <input id="newQty" type="number" min="0" value="0" inputmode="decimal">
     </div>
 
     <div class="form-row">
-
       <label>حد الإنذار</label>
-
-      <input
-        id="newLimit"
-        type="number"
-        min="0"
-        value="10"
-        inputmode="decimal"
-      >
-
+      <input id="newLimit" type="number" min="0" value="10" inputmode="decimal">
     </div>
 
     <div class="modal-actions">
-
-      <button class="save" onclick="addMaterial()">
-        حفظ
-      </button>
-
-      <button class="cancel" onclick="closeAddModal()">
-        إلغاء
-      </button>
-
+      <button class="save" onclick="addMaterial()">حفظ</button>
+      <button class="cancel" onclick="closeAddModal()">إلغاء</button>
     </div>
-
   </div>
-
 </div>
 
-<!-- نافذة الإضافة والسحب -->
+<!-- إضافة / سحب كمية -->
 <div class="modal" id="movementModal">
-
   <div class="modal-box">
-
-    <h2 id="movementTitle">
-      إضافة كمية
-    </h2>
+    <h2 id="movementTitle">إضافة كمية</h2>
 
     <div class="form-row">
-
       <label>المادة</label>
-
-      <input
-        id="movementName"
-        type="text"
-        readonly
-      >
-
+      <input id="movementName" type="text" readonly>
     </div>
 
     <div class="form-row">
-
-      <label id="movementLabel">
-        الكمية
-      </label>
-
-      <input
-        id="movementAmount"
-        type="number"
-        min="1"
-        value="1"
-        inputmode="decimal"
-      >
-
+      <label id="movementLabel">الكمية</label>
+      <input id="movementAmount" type="number" min="1" value="1" inputmode="decimal">
     </div>
 
     <div class="modal-actions">
-
-      <button class="save" onclick="saveMovement()">
-        حفظ العملية
-      </button>
-
-      <button class="cancel" onclick="closeMovementModal()">
-        إلغاء
-      </button>
-
+      <button class="save" onclick="saveMovement()">حفظ العملية</button>
+      <button class="cancel" onclick="closeMovementModal()">إلغاء</button>
     </div>
-
   </div>
-
 </div>
 
 <script>
-
 const defaultMaterials = [
-
-  {
-    name:"طحين أبيض (فاخر)",
-    category:"مواد خام",
-    qty:150,
-    limit:30
-  },
-
-  {
-    name:"خميرة فورية",
-    category:"مواد خام",
-    qty:8,
-    limit:15
-  },
-
-  {
-    name:"سكر ناعم",
-    category:"مواد خام",
-    qty:40,
-    limit:10
-  },
-
-  {
-    name:"خبز عربي طازج",
-    category:"منتجات جاهزة",
-    qty:850,
-    limit:150
-  }
-
+  {name:"طحين أبيض (فاخر)", category:"مواد خام", qty:150, limit:30},
+  {name:"خميرة فورية", category:"مواد خام", qty:8, limit:15},
+  {name:"سكر ناعم", category:"مواد خام", qty:40, limit:10},
+  {name:"خبز عربي طازج", category:"منتجات جاهزة", qty:850, limit:150}
 ];
 
 let materials = loadMaterials();
-
 let movementIndex = -1;
-
 let movementType = "add";
-
-let notificationEnabled =
-  localStorage.getItem("bakery_notifications") === "1";
-
-let notifiedLow =
-  JSON.parse(
-    localStorage.getItem("bakery_notified_low") || "{}"
-  );
-
+let notificationEnabled = localStorage.getItem("bakery_notifications") === "1";
+let notifiedLow = JSON.parse(localStorage.getItem("bakery_notified_low") || "{}");
 
 function loadMaterials(){
-
   try{
-
-    const saved =
-      localStorage.getItem("bakery_inventory");
-
-    return saved
-      ? JSON.parse(saved)
-      : defaultMaterials;
-
-  }catch(error){
-
+    const saved = localStorage.getItem("bakery_inventory");
+    return saved ? JSON.parse(saved) : defaultMaterials;
+  }catch(e){
     return defaultMaterials;
-
   }
-
 }
-
 
 function saveMaterials(){
-
-  localStorage.setItem(
-    "bakery_inventory",
-    JSON.stringify(materials)
-  );
-
+  localStorage.setItem("bakery_inventory", JSON.stringify(materials));
 }
-
 
 function unitFor(item){
-
   const name = item.name;
-
-  if(
-    name.includes("طحين") ||
-    name.includes("سكر") ||
-    name.includes("خميرة")
-  ){
-
-    return "كغم";
-
-  }
-
-  if(name.includes("خبز")){
-
-    return "ربطة";
-
-  }
-
+  if(name.includes("طحين") || name.includes("سكر") || name.includes("خميرة")) return "كغم";
+  if(name.includes("خبز")) return "ربطة";
   return "وحدة";
-
 }
-
 
 function escapeHtml(value){
-
-  return String(value).replace(
-    /[&<>"']/g,
-    function(character){
-
-      return {
-
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
-
-      }[character];
-
-    }
-  );
-
+  return String(value).replace(/[&<>"']/g, function(ch){
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[ch];
+  });
 }
-
 
 function render(){
+  const search = document.getElementById("search").value.trim().toLowerCase();
+  const body = document.getElementById("tableBody");
 
-  const search =
-    document
-      .getElementById("search")
-      .value
-      .trim()
-      .toLowerCase();
-
-  const body =
-    document.getElementById("tableBody");
-
-
-  const filtered =
-    materials
-      .map(
-        (item,index)=>({
-          item:item,
-          index:index
-        })
-      )
-      .filter(({item})=>
-
-        item.name
-          .toLowerCase()
-          .includes(search)
-
-        ||
-
-        item.category
-          .toLowerCase()
-          .includes(search)
-
-      );
-
+  const filtered = materials
+    .map((item,index)=>({item,index}))
+    .filter(({item}) =>
+      item.name.toLowerCase().includes(search) ||
+      item.category.toLowerCase().includes(search)
+    );
 
   if(filtered.length === 0){
-
-    body.innerHTML =
-      '<tr>' +
-      '<td colspan="7" class="empty">' +
-      'لا توجد مواد مطابقة للبحث' +
-      '</td>' +
-      '</tr>';
-
+    body.innerHTML = '<tr><td colspan="7" class="empty">لا توجد مواد مطابقة للبحث</td></tr>';
   }else{
+    body.innerHTML = filtered.map(({item,index})=>{
+      const low = Number(item.qty) <= Number(item.limit);
 
-    body.innerHTML =
-      filtered
-      .map(({item,index})=>{
+      return `
+        <tr>
+          <td class="name">${escapeHtml(item.name)}</td>
 
-        const low =
-          Number(item.qty) <=
-          Number(item.limit);
+          <td>
+            <span class="category">${escapeHtml(item.category)}</span>
+          </td>
 
+          <td>
+            <span class="qty ${low ? "low" : ""}">
+              ${item.qty} ${unitFor(item)}
+            </span>
+          </td>
 
-        return `
+          <td>
+            <span class="limit">
+              ${item.limit} ${unitFor(item)}
+            </span>
+          </td>
 
-          <tr>
+          <td>
+            <span class="status ${low ? "low" : "ok"}">
+              ${low ? "⚠ ينقص عن الحد" : "✓ متوفر"}
+            </span>
+          </td>
 
-            <td class="name">
-              ${escapeHtml(item.name)}
-            </td>
+          <td>
+            <div class="stock-actions">
+              <button class="btn-add" onclick="openMovementModal(${index},'add')">＋ إضافة</button>
+              <button class="btn-out" onclick="openMovementModal(${index},'out')">− سحب</button>
+            </div>
+          </td>
 
-            <td>
-              <span class="category">
-                ${escapeHtml(item.category)}
-              </span>
-            </td>
-
-            <td>
-
-              <span class="qty ${low ? "low" : ""}">
-                ${item.qty} ${unitFor(item)}
-              </span>
-
-            </td>
-
-            <td>
-
-              <span class="limit">
-                ${item.limit} ${unitFor(item)}
-              </span>
-
-            </td>
-
-            <td>
-
-              <span class="status ${low ? "low" : "ok"}">
-
-                ${
-                  low
-                  ? "⚠ ينقص عن الحد"
-                  : "✓ متوفر"
-                }
-
-              </span>
-
-            </td>
-
-            <td>
-
-              <div class="stock-actions">
-
-                <button
-                  class="btn-add"
-                  onclick="openMovementModal(${index},'add')"
-                >
-                  ＋ إضافة
-                </button>
-
-                <button
-                  class="btn-out"
-                  onclick="openMovementModal(${index},'out')"
-                >
-                  − سحب
-                </button>
-
-              </div>
-
-            </td>
-
-            <td>
-
-              <button
-                class="delete"
-                onclick="deleteMaterial(${index})"
-                title="حذف"
-              >
-                🗑️
-              </button>
-
-            </td>
-
-          </tr>
-
-        `;
-
-      })
-      .join("");
-
+          <td>
+            <button class="delete" onclick="deleteMaterial(${index})" title="حذف">🗑️</button>
+          </td>
+        </tr>
+      `;
+    }).join("");
   }
-
 
   updateSummary();
-
   renderLowStock();
-
 }
-
 
 function updateSummary(){
+  const lowCount = materials.filter(item =>
+    Number(item.qty) <= Number(item.limit)
+  ).length;
 
-  const lowCount =
-    materials.filter(item =>
-      Number(item.qty) <=
-      Number(item.limit)
-    ).length;
+  document.getElementById("totalMaterials").textContent = materials.length;
+  document.getElementById("lowMaterials").textContent = lowCount;
 
-
-  document
-    .getElementById("totalMaterials")
-    .textContent =
-    materials.length;
-
-
-  document
-    .getElementById("lowMaterials")
-    .textContent =
-    lowCount;
-
-
-  const status =
-    document.getElementById("stockStatus");
-
-
-  status.textContent =
-    lowCount > 0
-    ? "تحتاج انتباه"
-    : "جيد";
-
-
-  status.style.color =
-    lowCount > 0
-    ? "#df2048"
-    : "#07885c";
-
+  const status = document.getElementById("stockStatus");
+  status.textContent = lowCount > 0 ? "تحتاج انتباه" : "جيد";
+  status.style.color = lowCount > 0 ? "#df2048" : "#07885c";
 }
-
 
 function renderLowStock(){
+  const list = document.getElementById("lowStockList");
+  const count = document.getElementById("lowStockCount");
 
-  const list =
-    document.getElementById("lowStockList");
+  const lowItems = materials.filter(item =>
+    Number(item.qty) <= Number(item.limit)
+  );
 
-  const count =
-    document.getElementById("lowStockCount");
-
-
-  const lowItems =
-    materials.filter(item =>
-      Number(item.qty) <=
-      Number(item.limit)
-    );
-
-
-  count.textContent =
-    lowItems.length;
-
+  count.textContent = lowItems.length;
 
   if(lowItems.length === 0){
-
-    list.innerHTML =
-      '<div class="low-empty">' +
-      '✓ لا توجد مواد ناقصة حاليًا' +
-      '</div>';
-
+    list.innerHTML = '<div class="low-empty">✓ لا توجد مواد ناقصة حاليًا</div>';
     return;
-
   }
 
-
-  list.innerHTML =
-    lowItems
-    .map(item=>`
-
-      <div class="low-item">
-
-        <div>
-
-          <div class="low-name">
-            ${escapeHtml(item.name)}
-          </div>
-
-          <div class="low-category">
-            ${escapeHtml(item.category)}
-          </div>
-
-        </div>
-
-        <div class="low-qty">
-
-          ${item.qty} ${unitFor(item)}
-
-          <span class="low-limit">
-
-            الحد:
-            ${item.limit}
-            ${unitFor(item)}
-
-          </span>
-
-        </div>
-
+  list.innerHTML = lowItems.map(item=>`
+    <div class="low-item">
+      <div>
+        <div class="low-name">${escapeHtml(item.name)}</div>
+        <div class="low-category">${escapeHtml(item.category)}</div>
       </div>
-
-    `)
-    .join("");
-
+      <div class="low-qty">
+        ${item.qty} ${unitFor(item)}
+        <span class="low-limit">الحد: ${item.limit} ${unitFor(item)}</span>
+      </div>
+    </div>
+  `).join("");
 }
-
 
 function openAddModal(){
-
-  document
-    .getElementById("addModal")
-    .classList
-    .add("show");
-
-
-  setTimeout(()=>{
-
-    document
-      .getElementById("newName")
-      .focus();
-
-  },100);
-
+  document.getElementById("addModal").classList.add("show");
+  setTimeout(()=>document.getElementById("newName").focus(),100);
 }
-
 
 function closeAddModal(){
-
-  document
-    .getElementById("addModal")
-    .classList
-    .remove("show");
-
+  document.getElementById("addModal").classList.remove("show");
 }
-
 
 function addMaterial(){
-
-  const name =
-    document
-      .getElementById("newName")
-      .value
-      .trim();
-
-
-  const category =
-    document
-      .getElementById("newCategory")
-      .value;
-
-
-  const qty =
-    Number(
-      document
-        .getElementById("newQty")
-        .value
-    );
-
-
-  const limit =
-    Number(
-      document
-        .getElementById("newLimit")
-        .value
-    );
-
+  const name = document.getElementById("newName").value.trim();
+  const category = document.getElementById("newCategory").value;
+  const qty = Number(document.getElementById("newQty").value);
+  const limit = Number(document.getElementById("newLimit").value);
 
   if(!name){
-
     alert("اكتب اسم المادة.");
-
     return;
-
   }
-
 
   if(!Number.isFinite(qty) || qty < 0){
-
     alert("أدخل كمية صحيحة.");
-
     return;
-
   }
-
 
   if(!Number.isFinite(limit) || limit < 0){
-
     alert("أدخل حد إنذار صحيح.");
-
     return;
-
   }
-
 
   materials.push({
-
-    name:name,
-
-    category:category,
-
-    qty:qty,
-
-    limit:limit
-
+    name,
+    category,
+    qty,
+    limit
   });
 
-
   saveMaterials();
-
   render();
-
   closeAddModal();
 
-
-  document
-    .getElementById("newName")
-    .value = "";
-
-
-  document
-    .getElementById("newQty")
-    .value = "0";
-
-
-  document
-    .getElementById("newLimit")
-    .value = "10";
-
+  document.getElementById("newName").value = "";
+  document.getElementById("newQty").value = "0";
+  document.getElementById("newLimit").value = "10";
 
   checkLowStock();
-
 }
-
 
 function openMovementModal(index,type){
-
   movementIndex = index;
-
   movementType = type;
 
+  const item = materials[index];
 
-  const item =
-    materials[index];
+  document.getElementById("movementTitle").textContent =
+    type === "add" ? "＋ إضافة كمية" : "− سحب كمية";
 
+  document.getElementById("movementLabel").textContent =
+    type === "add" ? "الكمية المضافة" : "الكمية المسحوبة";
 
-  document
-    .getElementById("movementTitle")
-    .textContent =
-      type === "add"
-      ? "＋ إضافة كمية"
-      : "− سحب كمية";
-
-
-  document
-    .getElementById("movementLabel")
-    .textContent =
-      type === "add"
-      ? "الكمية المضافة"
-      : "الكمية المسحوبة";
-
-
-  document
-    .getElementById("movementName")
-    .value =
-    item.name;
-
-
-  document
-    .getElementById("movementAmount")
-    .value =
-    "1";
-
+  document.getElementById("movementName").value = item.name;
+  document.getElementById("movementAmount").value = "1";
 
   if(type === "out"){
-
-    document
-      .getElementById("movementAmount")
-      .max =
-      item.qty;
-
+    document.getElementById("movementAmount").max = item.qty;
   }else{
-
-    document
-      .getElementById("movementAmount")
-      .removeAttribute("max");
-
+    document.getElementById("movementAmount").removeAttribute("max");
   }
 
-
-  document
-    .getElementById("movementModal")
-    .classList
-    .add("show");
-
+  document.getElementById("movementModal").classList.add("show");
 
   setTimeout(()=>{
-
-    const input =
-      document.getElementById(
-        "movementAmount"
-      );
-
-    input.focus();
-    input.select();
-
+    document.getElementById("movementAmount").focus();
+    document.getElementById("movementAmount").select();
   },100);
-
 }
-
 
 function closeMovementModal(){
-
-  document
-    .getElementById("movementModal")
-    .classList
-    .remove("show");
-
-
+  document.getElementById("movementModal").classList.remove("show");
   movementIndex = -1;
-
 }
-
 
 function saveMovement(){
+  if(movementIndex < 0) return;
 
-  if(movementIndex < 0){
-
-    return;
-
-  }
-
-
-  const amount =
-    Number(
-      document
-        .getElementById("movementAmount")
-        .value
-    );
-
+  const amount = Number(document.getElementById("movementAmount").value);
 
   if(!Number.isFinite(amount) || amount <= 0){
-
     alert("أدخل كمية صحيحة.");
-
     return;
-
   }
 
-
-  const item =
-    materials[movementIndex];
-
+  const item = materials[movementIndex];
 
   if(movementType === "out"){
-
     if(amount > Number(item.qty)){
-
       alert(
         "لا يمكن سحب هذه الكمية.\n" +
-        "الكمية المتوفرة: " +
-        item.qty
+        "الكمية المتوفرة: " + item.qty
       );
-
       return;
-
     }
 
-
-    item.qty =
-      Number(item.qty) -
-      amount;
-
+    item.qty = Number(item.qty) - amount;
   }else{
-
-    item.qty =
-      Number(item.qty) +
-      amount;
-
+    item.qty = Number(item.qty) + amount;
   }
 
-
   saveMaterials();
-
   render();
-
   closeMovementModal();
-
   checkLowStock();
-
 }
-
 
 function deleteMaterial(index){
+  const item = materials[index];
 
-  const item =
-    materials[index];
-
-
-  if(
-    !confirm(
-      "هل تريد حذف المادة:\n" +
-      item.name +
-      " ؟"
-    )
-  ){
-
+  if(!confirm("هل تريد حذف المادة:\n" + item.name + " ؟")){
     return;
-
   }
 
-
   materials.splice(index,1);
-
   saveMaterials();
-
   render();
-
 }
 
-
 function showToast(item){
+  const container = document.getElementById("toastContainer");
 
-  const container =
-    document.getElementById(
-      "toastContainer"
-    );
-
-
-  const toast =
-    document.createElement("div");
-
-
+  const toast = document.createElement("div");
   toast.className = "toast";
-
 
   toast.innerHTML =
     "<strong>⚠️ تنبيه المخزون</strong>" +
-
     escapeHtml(item.name) +
-
     ": الكمية الحالية " +
-
     item.qty +
-
     " " +
-
     unitFor(item) +
-
     "، والحد " +
-
     item.limit +
-
     " " +
-
     unitFor(item) +
-
     ".";
-
 
   container.appendChild(toast);
 
-
   setTimeout(()=>{
-
     toast.remove();
-
   },7000);
-
 }
 
-
 function checkLowStock(){
-
   materials.forEach((item,index)=>{
+    const key = index + ":" + item.name;
+    const isLow = Number(item.qty) <= Number(item.limit);
 
-    const key =
-      index + ":" + item.name;
-
-
-    const isLow =
-      Number(item.qty) <=
-      Number(item.limit);
-
-
-    if(
-      isLow &&
-      !notifiedLow[key]
-    ){
-
+    if(isLow && !notifiedLow[key]){
       showToast(item);
-
 
       if(
         notificationEnabled &&
         "Notification" in window &&
         Notification.permission === "granted"
       ){
-
         try{
-
-          new Notification(
-            "⚠️ تنبيه مخزون المخبز",
-            {
-              body:
-                item.name +
-                ": الكمية الحالية " +
-                item.qty +
-                " " +
-                unitFor(item)
-            }
-          );
-
-        }catch(error){}
-
+          new Notification("⚠️ تنبيه مخزون المخبز",{
+            body:
+              item.name +
+              ": الكمية الحالية " +
+              item.qty +
+              " " +
+              unitFor(item)
+          });
+        }catch(e){}
       }
 
-
-      notifiedLow[key] =
-        Date.now();
-
+      notifiedLow[key] = Date.now();
     }
 
-
-    if(
-      !isLow &&
-      notifiedLow[key]
-    ){
-
+    if(!isLow && notifiedLow[key]){
       delete notifiedLow[key];
-
     }
-
   });
-
 
   localStorage.setItem(
     "bakery_notified_low",
     JSON.stringify(notifiedLow)
   );
-
 }
-
 
 async function enableNotifications(){
-
   if(!("Notification" in window)){
-
-    alert(
-      "إشعارات المتصفح غير مدعومة هنا، " +
-      "لكن تنبيه الصفحة يعمل."
-    );
-
+    alert("إشعارات المتصفح غير مدعومة هنا، لكن تنبيه الصفحة يعمل.");
     notificationEnabled = true;
-
-    localStorage.setItem(
-      "bakery_notifications",
-      "1"
-    );
-
+    localStorage.setItem("bakery_notifications","1");
     updateNotificationButton();
-
     checkLowStock();
-
     return;
-
   }
-
 
   try{
-
-    const permission =
-      await Notification.requestPermission();
-
+    const permission = await Notification.requestPermission();
 
     if(permission === "granted"){
-
       notificationEnabled = true;
+      localStorage.setItem("bakery_notifications","1");
 
-      localStorage.setItem(
-        "bakery_notifications",
-        "1"
-      );
-
-
-      new Notification(
-        "نظام المخبز",
-        {
-          body:
-            "تم تفعيل الإشعارات بنجاح 🔔"
-        }
-      );
-
+      new Notification("نظام المخبز",{
+        body:"تم تفعيل الإشعارات بنجاح 🔔"
+      });
 
       updateNotificationButton();
-
       checkLowStock();
-
     }else{
-
-      alert(
-        "لم يتم السماح بالإشعارات. " +
-        "يمكنك تفعيلها من إعدادات المتصفح."
-      );
-
+      alert("لم يتم السماح بالإشعارات. يمكنك تفعيلها من إعدادات المتصفح.");
     }
-
-  }catch(error){
-
-    alert(
-      "تعذر تفعيل إشعارات المتصفح."
-    );
-
+  }catch(e){
+    alert("تعذر تفعيل إشعارات المتصفح.");
   }
-
 }
 
-
 function updateNotificationButton(){
-
-  const button =
-    document.getElementById(
-      "notifyBtn"
-    );
-
+  const button = document.getElementById("notifyBtn");
 
   if(
     notificationEnabled &&
     "Notification" in window &&
     Notification.permission === "granted"
   ){
-
-    button.textContent =
-      "🔔 الإشعارات مفعلة";
-
+    button.textContent = "🔔 الإشعارات مفعلة";
   }else{
-
-    button.textContent =
-      "🔔 الإشعارات";
-
+    button.textContent = "🔔 الإشعارات";
   }
-
 }
-
 
 function scrollToInventory(){
-
-  document
-    .getElementById("inventoryPanel")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
+  document.getElementById("inventoryPanel").scrollIntoView({
+    behavior:"smooth"
+  });
 }
-
 
 function closeModalWhenClickOutside(event){
-
-  if(
-    event.target.id ===
-    "addModal"
-  ){
-
+  if(event.target.id === "addModal"){
     closeAddModal();
-
   }
 
-
-  if(
-    event.target.id ===
-    "movementModal"
-  ){
-
+  if(event.target.id === "movementModal"){
     closeMovementModal();
-
   }
-
 }
 
+document.getElementById("addModal")
+  .addEventListener("click",closeModalWhenClickOutside);
 
-document
-  .getElementById("addModal")
-  .addEventListener(
-    "click",
-    closeModalWhenClickOutside
-  );
+document.getElementById("movementModal")
+  .addEventListener("click",closeModalWhenClickOutside);
 
-
-document
-  .getElementById("movementModal")
-  .addEventListener(
-    "click",
-    closeModalWhenClickOutside
-  );
-
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(event.key === "Escape"){
-
-      closeAddModal();
-
-      closeMovementModal();
-
-    }
-
+document.addEventListener("keydown",function(event){
+  if(event.key === "Escape"){
+    closeAddModal();
+    closeMovementModal();
   }
-);
-
+});
 
 document.getElementById("date").textContent =
-  new Intl.DateTimeFormat(
-    "ar-IQ",
-    {
-      weekday:"long",
-      year:"numeric",
-      month:"long",
-      day:"numeric"
-    }
-  ).format(new Date());
-
+  new Intl.DateTimeFormat("ar-IQ",{
+    weekday:"long",
+    year:"numeric",
+    month:"long",
+    day:"numeric"
+  }).format(new Date());
 
 render();
-
 updateNotificationButton();
 
-setTimeout(
-  checkLowStock,
-  500
-);
-
-setInterval(
-  checkLowStock,
-  60000
-);
-
+setTimeout(checkLowStock,500);
+setInterval(checkLowStock,60000);
 </script>
 
+<footer class="footer">
+
+  <div class="footer-inner footer-info">
+
+    <div class="footer-brand">
+      <strong>🥖 مخبزنا - إدارة المخزون</strong>
+      <span>نظام بسيط لإدارة ومتابعة مخزون المخبز</span>
+    </div>
+
+    <div class="footer-section">
+      <strong>🔒 الخصوصية وحفظ البيانات</strong>
+      <span>
+        يتم حفظ بيانات المخزون محليًا في متصفح الجهاز باستخدام
+        Local Storage، ولا يتم إرسال بيانات المخزون إلى أي جهة خارجية
+        من خلال هذه الصفحة.
+      </span>
+    </div>
+
+    <div class="footer-section">
+      <strong>🛡️ خصوصية المستخدم</strong>
+      <span>
+        لا نستخدم أو نطلب عنوان المستخدم أو موقعه الجغرافي،
+        ولا تحتاج الصفحة إلى معرفة عنوانك لاستخدام نظام المخزون.
+      </span>
+    </div>
+
+    <div class="footer-section developer">
+      <strong>مطور الموقع </strong>
+      <span> Abdulwahab kareem</span>
+      <small>جميع الحقوق محفوظة © 2026</small>
+    </div>
+
+  </div>
+
+</footer>
 </body>
 </html>
