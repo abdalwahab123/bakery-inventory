@@ -20,9 +20,8 @@ function showLogin(message = "") {
       <h2>🥖 تسجيل الدخول</h2>
       <input id="loginEmail" type="email" placeholder="البريد الإلكتروني"
         style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box">
-      <input id="loginPassword" type="password" placeholder="كلمة المرور"
-        style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box">
-      <button id="loginButton"
+      <input id="loginPassword" type="password" dir="ltr" placeholder="كلمة المرور"
+  style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box">      <button id="loginButton"
         style="width:100%;padding:13px;background:#2563eb;color:white;border:0;border-radius:8px">
         دخول
       </button>
