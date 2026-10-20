@@ -1243,5 +1243,11 @@ setInterval(checkLowStock,60000);
   </div>
 
 </footer>
+  
+<script type="module">
+  import { auth, db, BAKERY_ID } from "./firebase.js";
+
+  console.log("Firebase initialized", BAKERY_ID);
+</script>
 </body>
 </html>
