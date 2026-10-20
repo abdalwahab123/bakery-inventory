@@ -43,7 +43,8 @@ function showLogin(message = "") {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (e) {
       console.error(e);
-      error.textContent = "تعذر تسجيل الدخول. تأكد من البريد وكلمة المرور.";
+    
+error.textContent = "رمز الخطأ: " + e.code;
     }
   };
 }
