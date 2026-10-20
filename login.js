@@ -92,3 +92,5 @@ onAuthStateChanged(auth, async (user) => {
     screen.textContent = "حدث خطأ أثناء التحقق من الحساب. راجع إعدادات Firebase.";
   }
 });
+
+alert("تم تشغيل ملف login.js بنجاح");
